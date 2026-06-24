@@ -8,23 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        cyber: {
-                            bg: '#0a0b10',
-                            blue: '#00f0ff',
-                            pink: '#ff007f',
-                            purple: '#7000ff',
-                            darkCard: 'rgba(10, 11, 16, 0.7)'
+                        professional: {
+                            bg: '#f4f5f7',
+                            slate: '#1e293b',
+                            blue: '#0066cc',
+                            lightBlue: '#e6f0fa',
+                            textDark: '#0f172a',
+                            textMuted: '#475569'
                         }
                     },
                     fontFamily: {
-                        cyber: ['Orbitron', 'Noto Sans TC', 'sans-serif']
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif']
                     }
                 }
             }
@@ -33,84 +34,59 @@
 
     <style>
         body {
-            background-color: #0a0b10;
-            font-family: 'Noto Sans TC', 'Orbitron', sans-serif;
+            background-color: #f4f5f7;
+            font-family: 'Noto Sans TC', 'Inter', sans-serif;
             overflow-x: hidden;
+            color: #0f172a;
         }
 
-        /* 霓虹網格背景 */
-        .cyber-grid {
+        /* 專業級極細網格背景 */
+        .professional-grid {
             background-image: 
-                linear-gradient(rgba(112, 0, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(112, 0, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
             background-position: center center;
         }
 
-        /* 玻璃擬態核心樣式 */
-        .glass-panel {
-            background: rgba(15, 17, 26, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        /* 極致白色玻璃擬態核心 (White Glassmorphism) */
+        .white-glass {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
         }
 
-        .glass-nav {
-            background: rgba(10, 11, 16, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        .white-glass-nav {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.02);
         }
 
-        /* 霓虹發光與呼吸燈效果 */
-        .neon-border-blue:hover {
-            border-color: #00f0ff;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        /* 懸停邊框微光與陰影動畫 */
+        .glass-hover-effect:hover {
+            border-color: rgba(0, 102, 204, 0.3);
+            box-shadow: 0 12px 40px 0 rgba(0, 102, 204, 0.08);
+            transform: translateY(-2px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-hover-effect {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 專業漸層按鈕 */
+        .btn-premium {
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            box-shadow: 0 4px 14px 0 rgba(0, 102, 204, 0.2);
             transition: all 0.3s ease;
         }
-
-        .neon-border-pink:hover {
-            border-color: #ff007f;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .neon-text-blue {
-            text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
-        }
-
-        .neon-text-pink {
-            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
-        }
-
-        .neon-glow-btn-blue {
-            border: 1px solid #00f0ff;
-            box-shadow: inset 0 0 4px rgba(0, 240, 255, 0.4), 0 0 8px rgba(0, 240, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        .neon-glow-btn-blue:hover {
-            background: #00f0ff;
-            color: #0a0b10;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
-        }
-
-        .neon-glow-btn-pink {
-            border: 1px solid #ff007f;
-            box-shadow: inset 0 0 4px rgba(255, 0, 127, 0.4), 0 0 8px rgba(255, 0, 127, 0.2);
-            transition: all 0.3s ease;
-        }
-        .neon-glow-btn-pink:hover {
-            background: #ff007f;
-            color: #0a0b10;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.8);
-        }
-
-        /* 3D 傾斜與卡片懸停流暢動畫 */
-        .tilt-card {
-            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+        .btn-premium:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px 0 rgba(0, 102, 204, 0.3);
         }
 
         /* 網頁滾動條美化 */
@@ -118,110 +94,111 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0a0b10;
+            background: #f4f5f7;
         }
         ::-webkit-scrollbar-thumb {
-            background: #7000ff;
+            background: #cbd5e1;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #00f0ff;
+            background: #0066cc;
         }
 
         /* 打字機光標 */
         .cursor {
             display: inline-block;
-            width: 3px;
-            background-color: #00f0ff;
+            width: 2px;
+            background-color: #0066cc;
             margin-left: 4px;
-            animation: blink 0.6s infinite;
+            animation: blink 0.8s infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* 背景裝飾光暈 */
-        .glow-orb-1 {
+        /* 輕奢感背景環境光 */
+        .ambient-glow-1 {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
-            top: 10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.06) 0%, transparent 70%);
+            top: -10%;
             left: -10%;
             z-index: 0;
             pointer-events: none;
         }
-        .glow-orb-2 {
+        .ambient-glow-2 {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
-            bottom: 20%;
-            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(230, 240, 250, 0.8) 0%, transparent 70%);
+            bottom: 10%;
+            right: -5%;
             z-index: 0;
             pointer-events: none;
         }
     </style>
 </head>
-<body class="text-gray-200 min-h-screen cyber-grid relative">
+<body class="bg-professional-bg min-h-screen professional-grid relative text-professional-textDark">
 
-    <div class="glow-orb-1"></div>
-    <div class="glow-orb-2"></div>
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
 
-    <nav class="glass-nav fixed top-0 left-0 w-full z-50 px-6 py-3 transition-all duration-300">
+    <nav class="white-glass-nav fixed top-0 left-0 w-full z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex flex-col">
-                <a href="#" class="font-cyber font-black text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-pink neon-text-blue">
-                    陳芃均 <span class="text-xs font-light text-gray-400 border-l border-gray-600 pl-2 ml-2 hidden sm:inline">Chen, Peng-Jun</span>
+                <a href="#" class="font-sans font-bold text-lg md:text-xl tracking-tight text-professional-textDark">
+                    陳芃均 <span class="text-xs font-normal text-professional-textMuted border-l border-slate-300 pl-2 ml-2 hidden sm:inline">Chen, Peng-Jun</span>
                 </a>
-                <span class="text-[10px] font-cyber tracking-widest text-cyber-blue uppercase opacity-80 mt-0.5">
+                <span class="text-[10px] font-sans font-medium tracking-widest text-professional-blue uppercase mt-0.5">
                     // 資優民主國 MEMBER
                 </span>
             </div>
             
-            <button id="menu-btn" class="sm:hidden text-cyber-blue focus:outline-none text-2xl">
+            <button id="menu-btn" class="sm:hidden text-professional-textDark focus:outline-none text-xl">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-            <div id="nav-links" class="hidden sm:flex space-x-8 font-cyber tracking-widest text-sm">
-                <a href="#about" class="text-gray-300 hover:text-cyber-blue transition-colors duration-300 relative group py-1">關於我 (About)</a>
-                <a href="#projects" class="text-gray-300 hover:text-cyber-pink transition-colors duration-300 relative group py-1">核心專案 (Projects)</a>
-                <a href="#skills" class="text-gray-300 hover:text-cyber-purple transition-colors duration-300 relative group py-1">技術工具 (Skills)</a>
+            <div id="nav-links" class="hidden sm:flex space-x-8 font-sans font-medium text-sm tracking-wide">
+                <a href="#about" class="text-professional-textMuted hover:text-professional-blue transition-colors duration-300">關於我</a>
+                <a href="#projects" class="text-professional-textMuted hover:text-professional-blue transition-colors duration-300">核心專案</a>
+                <a href="#skills" class="text-professional-textMuted hover:text-professional-blue transition-colors duration-300">技術工具</a>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden sm:hidden flex flex-col space-y-4 mt-4 pt-4 border-t border-gray-800 text-center font-cyber">
-            <a href="#about" class="text-gray-300 hover:text-cyber-blue py-2">關於我 (About)</a>
-            <a href="#projects" class="text-gray-300 hover:text-cyber-pink py-2">核心專案 (Projects)</a>
-            <a href="#skills" class="text-gray-300 hover:text-cyber-purple py-2">技術工具 (Skills)</a>
+        <div id="mobile-menu" class="hidden sm:hidden flex flex-col space-y-3 mt-4 pt-4 border-t border-slate-200 text-center font-sans font-medium">
+            <a href="#about" class="text-professional-textMuted hover:text-professional-blue py-1">關於我</a>
+            <a href="#projects" class="text-professional-textMuted hover:text-professional-blue py-1">核心專案</a>
+            <a href="#skills" class="text-professional-textMuted hover:text-professional-blue py-1">技術工具</a>
         </div>
     </nav>
 
     <section class="min-h-screen flex items-center justify-center pt-24 px-6 relative z-10">
-        <div class="max-w-4xl text-center glass-panel p-8 md:p-16 rounded-2xl border border-cyber-blue/20 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyber-blue"></div>
-            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyber-pink"></div>
+        <div class="max-w-4xl w-full text-center white-glass p-8 md:p-16 rounded-2xl border border-white relative">
+            <span class="inline-block px-3 py-1 bg-white/80 border border-slate-200 rounded-full text-xs font-medium text-professional-textMuted tracking-wider uppercase mb-6 shadow-sm">
+                👋 Portfolio Ecosystem
+            </span>
 
-            <h1 class="text-3xl md:text-6xl font-black mb-4 tracking-wide text-white font-cyber">
-                👋 哈囉，我是 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink neon-text-pink">陳芃均</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight text-professional-textDark">
+                哈囉，我是 <span class="text-transparent bg-clip-text bg-gradient-to-r from-professional-blue to-cyan-600">陳芃均</span>
             </h1>
             
-            <div class="text-xs md:text-sm font-cyber text-cyber-blue/80 tracking-widest uppercase mb-6">
+            <div class="text-xs md:text-sm font-sans font-bold text-professional-blue/80 tracking-widest uppercase mb-6">
                 [ AFFILIATION: 資優民主國 ]
             </div>
             
-            <div class="h-12 md:h-8 flex items-center justify-center mb-10">
-                <p id="typewriter" class="text-base md:text-xl font-medium tracking-wider text-gray-300 font-cyber"></p>
-                <span class="cursor text-base md:text-xl"></span>
+            <div class="h-8 flex items-center justify-center mb-12">
+                <p id="typewriter" class="text-base md:text-lg font-medium tracking-wide text-professional-textMuted"></p>
+                <span class="cursor text-base md:text-lg"></span>
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#projects" class="neon-glow-btn-blue text-cyber-blue px-8 py-3 rounded-md font-cyber font-bold tracking-widest text-sm w-full sm:w-auto text-center">
-                    <i class="fa-solid fa-layer-group mr-2"></i>瀏覽我的作品
+                <a href="#projects" class="btn-premium text-white px-8 py-3.5 rounded-lg font-sans font-semibold tracking-wide text-sm w-full sm:w-auto text-center shadow-md">
+                    <i class="fa-solid fa-layer-group mr-2 opacity-80"></i>瀏覽核心作品
                 </a>
-                <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="neon-glow-btn-pink text-cyber-pink px-8 py-3 rounded-md font-cyber font-bold tracking-widest text-sm w-full sm:w-auto text-center">
-                    <i class="fa-brands fa-discord mr-2"></i>聯絡我（直達 Discord）
+                <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-professional-slate border border-slate-200 px-8 py-3.5 rounded-lg font-sans font-semibold tracking-wide text-sm text-center transition-all shadow-sm">
+                    <i class="fa-brands fa-discord mr-2 text-indigo-500"></i>聯絡我（直達 Discord）
                 </a>
             </div>
         </div>
@@ -229,120 +206,120 @@
 
     <section id="about" class="py-24 px-6 max-w-5xl mx-auto relative z-10 scroll-mt-20">
         <div class="flex items-center space-x-4 mb-12">
-            <h2 class="text-2xl md:text-4xl font-cyber font-black tracking-wider text-white uppercase neon-text-blue">
-                // 關於我 <span class="text-cyber-blue">About Me</span>
+            <h2 class="text-2xl md:text-3xl font-sans font-bold tracking-tight text-professional-textDark">
+                關於我 <span class="text-sm font-normal text-professional-textMuted block md:inline md:ml-2">/ About Me</span>
             </h2>
-            <div class="h-[2px] flex-grow bg-gradient-to-r from-cyber-blue to-transparent"></div>
+            <div class="h-[1px] flex-grow bg-slate-200"></div>
         </div>
         
-        <div class="glass-panel p-8 md:p-10 rounded-xl relative overflow-hidden border-l-4 border-l-cyber-blue">
-            <p class="text-gray-300 leading-relaxed text-base md:text-lg tracking-wide whitespace-pre-line">
-                身為 <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="text-cyber-blue hover:text-cyber-pink hover:underline font-bold transition-all duration-300 neon-text-blue">資優民主國</a> 的一員，我是一位熱衷於將嚴謹的程式邏輯與前衛的視覺美學相結合的開發者。專注於 Web 前端應用開發、Discord 機器人自動化以及雲端自動化整合。擅長在多平台上進行高效佈署與全天候維護，持續追求程式碼的優化與極致的用戶體驗。
+        <div class="white-glass p-8 md:p-10 rounded-2xl border border-white">
+            <p class="text-professional-textMuted leading-relaxed text-base md:text-lg tracking-wide whitespace-pre-line">
+                身為 <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="text-professional-blue hover:underline font-semibold transition-all duration-300">資優民主國</a> 的一員，我是一位熱衷於將嚴謹的程式邏輯與前衛的視覺美學相結合的開發者。專注於 Web 前端應用開發、Discord 機器人自動化以及雲端自動化整合。擅長在多平台上進行高效佈署與全天候維護，持續追求程式碼的優化與極致的用戶體驗。
             </p>
         </div>
     </section>
 
     <section id="projects" class="py-24 px-6 max-w-7xl mx-auto relative z-10 scroll-mt-20">
         <div class="flex items-center space-x-4 mb-12">
-            <h2 class="text-2xl md:text-4xl font-cyber font-black tracking-wider text-white uppercase neon-text-pink">
-                // 核心專案 <span class="text-cyber-pink">Projects</span>
+            <h2 class="text-2xl md:text-3xl font-sans font-bold tracking-tight text-professional-textDark">
+                核心專案 <span class="text-sm font-normal text-professional-textMuted block md:inline md:ml-2">/ Projects</span>
             </h2>
-            <div class="h-[2px] flex-grow bg-gradient-to-r from-cyber-pink to-transparent"></div>
+            <div class="h-[1px] flex-grow bg-slate-200"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <div class="tilt-card glass-panel rounded-xl p-6 md:p-8 flex flex-col justify-between neon-border-blue border border-white/10">
+            <div class="glass-hover-effect white-glass rounded-2xl p-6 md:p-8 flex flex-col justify-between border border-white">
                 <div>
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-wide">
-                            <a href="https://peng-jun.github.io/Seismic-monitoring-station/" target="_blank" class="text-white hover:text-cyber-blue hover:underline transition-colors duration-300 flex items-center gap-2">
-                                <span class="text-cyber-blue">🛰️</span> 地震觀測站維護管理系統
+                        <h3 class="text-xl font-bold tracking-tight">
+                            <a href="https://peng-jun.github.io/Seismic-monitoring-station/" target="_blank" class="text-professional-textDark hover:text-professional-blue transition-colors duration-300 flex items-center gap-2">
+                                🛰️ 地震觀測站維護管理系統
                             </a>
                         </h3>
                     </div>
                     <a href="https://peng-jun.github.io/Seismic-monitoring-station/" target="_blank" class="block group mb-6">
-                        <p class="text-sm md:text-base text-gray-400 group-hover:text-gray-200 leading-relaxed transition-colors">
-                            專為地震觀測數據與硬體設備打造的現代化後台管理介面。前端採用直觀的 UI/UX 設計，將複雜的觀測數據進行圖表化與即時數據監控呈現。🔗 <span class="text-xs text-cyber-blue underline opacity-80">點擊文字直達專案</span>
+                        <p class="text-sm md:text-base text-professional-textMuted group-hover:text-professional-textDark leading-relaxed transition-colors">
+                            專為地震觀測數據與硬體設備打造的現代化後台管理介面。前端採用直觀的 UI/UX 設計，將複雜的觀測數據進行圖表化與即時數據監控呈現。🔗 <span class="text-xs text-professional-blue underline opacity-80">點擊文字直達專案</span>
                         </p>
                     </a>
                     <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="text-xs font-cyber bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/30 px-3 py-1 rounded-full">HTML5</span>
-                        <span class="text-xs font-cyber bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/30 px-3 py-1 rounded-full">CSS3</span>
-                        <span class="text-xs font-cyber bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/30 px-3 py-1 rounded-full">JavaScript</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">HTML5</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">CSS3</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">JavaScript</span>
                     </div>
                 </div>
                 <div class="flex gap-4">
-                    <a href="https://peng-jun.github.io/Seismic-monitoring-station/" target="_blank" class="flex-1 text-center py-2 rounded border border-cyber-blue text-cyber-blue text-sm font-cyber font-medium neon-glow-btn-blue">瀏覽網站</a>
-                    <a href="https://github.com/peng-jun/Seismic-monitoring-station" target="_blank" class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-400 text-sm font-cyber font-medium hover:border-white hover:text-white transition-all">原始碼</a>
+                    <a href="https://peng-jun.github.io/Seismic-monitoring-station/" target="_blank" class="flex-1 text-center py-2 rounded-lg bg-professional-blue text-white text-sm font-semibold shadow-sm hover:bg-professional-blue/90 transition-all">瀏覽網站</a>
+                    <a href="https://github.com/peng-jun/Seismic-monitoring-station" target="_blank" class="flex-1 text-center py-2 rounded-lg border border-slate-200 text-professional-textMuted bg-white text-sm font-semibold hover:bg-slate-50 transition-all">原始碼</a>
                 </div>
             </div>
 
-            <div class="tilt-card glass-panel rounded-xl p-6 md:p-8 flex flex-col justify-between neon-border-pink border border-white/10">
+            <div class="glass-hover-effect white-glass rounded-2xl p-6 md:p-8 flex flex-col justify-between border border-white">
                 <div>
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-wide">
-                            <a href="https://peng-jun.github.io/Logic-circuit/" target="_blank" class="text-white hover:text-cyber-pink hover:underline transition-colors duration-300 flex items-center gap-2">
-                                <span class="text-cyber-pink">⚡</span> Logic Circuit 邏輯解謎遊戲
+                        <h3 class="text-xl font-bold tracking-tight">
+                            <a href="https://peng-jun.github.io/Logic-circuit/" target="_blank" class="text-professional-textDark hover:text-professional-blue transition-colors duration-300 flex items-center gap-2">
+                                ⚡ Logic Circuit 邏輯解謎遊戲
                             </a>
                         </h3>
                     </div>
                     <a href="https://peng-jun.github.io/Logic-circuit/" target="_blank" class="block group mb-6">
-                        <p class="text-sm md:text-base text-gray-400 group-hover:text-gray-200 leading-relaxed transition-colors">
-                            一款完全運行於瀏覽器上的策略型邏輯電路解謎遊戲。玩家必須透過邏輯閘（AND, OR, NOT）的排列組合來導通電路，深入優化了 JavaScript 邏輯運算架構與 DOM 互動效能。🔗 <span class="text-xs text-cyber-pink underline opacity-80">點擊文字直達專案</span>
+                        <p class="text-sm md:text-base text-professional-textMuted group-hover:text-professional-textDark leading-relaxed transition-colors">
+                            一款完全運行於瀏覽器上的策略型邏輯電路解謎遊戲。玩家必須透過邏輯閘（AND, OR, NOT）的排列組合來導通電路，深入優化了 JavaScript 邏輯運算架構與 DOM 互動效能。🔗 <span class="text-xs text-professional-blue underline opacity-80">點擊文字直達專案</span>
                         </p>
                     </a>
                     <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="text-xs font-cyber bg-cyber-pink/10 text-cyber-pink border border-cyber-pink/30 px-3 py-1 rounded-full">JavaScript</span>
-                        <span class="text-xs font-cyber bg-cyber-pink/10 text-cyber-pink border border-cyber-pink/30 px-3 py-1 rounded-full">DOM Optimization</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">JavaScript</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">DOM Optimization</span>
                     </div>
                 </div>
                 <div class="flex gap-4">
-                    <a href="https://peng-jun.github.io/Logic-circuit/" target="_blank" class="flex-1 text-center py-2 rounded border border-ff007f text-cyber-pink text-sm font-cyber font-medium neon-glow-btn-pink">開始遊戲</a>
-                    <a href="https://github.com/peng-jun/Logic-circuit" target="_blank" class="flex-1 text-center py-2 rounded border border-gray-600 text-gray-400 text-sm font-cyber font-medium hover:border-white hover:text-white transition-all">原始碼</a>
+                    <a href="https://peng-jun.github.io/Logic-circuit/" target="_blank" class="flex-1 text-center py-2 rounded-lg bg-professional-blue text-white text-sm font-semibold shadow-sm hover:bg-professional-blue/90 transition-all">開始遊戲</a>
+                    <a href="https://github.com/peng-jun/Logic-circuit" target="_blank" class="flex-1 text-center py-2 rounded-lg border border-slate-200 text-professional-textMuted bg-white text-sm font-semibold hover:bg-slate-50 transition-all">原始碼</a>
                 </div>
             </div>
 
-            <div class="tilt-card glass-panel rounded-xl p-6 md:p-8 flex flex-col justify-between neon-border-blue border border-white/10">
+            <div class="glass-hover-effect white-glass rounded-2xl p-6 md:p-8 flex flex-col justify-between border border-white">
                 <div>
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-wide">
-                            <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="text-white hover:text-cyber-blue hover:underline transition-colors duration-300 flex items-center gap-2">
-                                <span class="text-cyber-blue">🤖</span> Discord 自動化生態系 (User Empire)
+                        <h3 class="text-xl font-bold tracking-tight">
+                            <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="text-professional-textDark hover:text-professional-blue transition-colors duration-300 flex items-center gap-2">
+                                🤖 Discord 自動化生態系 (User Empire)
                             </a>
                         </h3>
                     </div>
                     <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="block group mb-6">
-                        <p class="text-sm md:text-base text-gray-400 group-hover:text-gray-200 leading-relaxed transition-colors">
-                            基於 Python 異步架構開發，整合新進成員歡迎、特定資訊抓取（Sniper）等功能。穩定託管於雲端平台（Render/Railway），並搭配 UptimeRobot 進行 24/7 全天候監控。🔗 <span class="text-xs text-cyber-blue underline opacity-80">點擊文字直達伺服器</span>
+                        <p class="text-sm md:text-base text-professional-textMuted group-hover:text-professional-textDark leading-relaxed transition-colors">
+                            基於 Python 異步架構開發，整合新進成員歡迎、特定資訊抓取（Sniper）等功能。穩定託管於雲端平台（Render/Railway），並搭配 UptimeRobot 進行 24/7 全天候監控。🔗 <span class="text-xs text-professional-blue underline opacity-80">點擊文字直達伺服器</span>
                         </p>
                     </a>
                     <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="text-xs font-cyber bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/30 px-3 py-1 rounded-full">Python</span>
-                        <span class="text-xs font-cyber bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/30 px-3 py-1 rounded-full">Discord.py</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">Python</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">Discord.py</span>
                     </div>
                 </div>
                 <div>
-                    <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="block w-full text-center py-2 rounded border border-cyber-blue text-cyber-blue text-sm font-cyber font-medium neon-glow-btn-blue">加入社群生態系</a>
+                    <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="block w-full text-center py-2.5 rounded-lg border border-indigo-200 bg-indigo-50/50 text-indigo-600 text-sm font-semibold hover:bg-indigo-50 transition-all">加入社群生態系</a>
                 </div>
             </div>
 
-            <div class="tilt-card glass-panel rounded-xl p-6 md:p-8 flex flex-col justify-between neon-border-pink border border-white/10">
+            <div class="glass-hover-effect white-glass rounded-2xl p-6 md:p-8 flex flex-col justify-between border border-white">
                 <div>
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide flex items-center gap-2">
-                            <span class="text-cyber-pink">☁️</span> GAS 雲端自動化應用
+                        <h3 class="text-xl font-bold text-professional-textDark tracking-tight flex items-center gap-2">
+                            ☁️ GAS 雲端自動化應用
                         </h3>
                     </div>
-                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                    <p class="text-professional-textMuted text-sm md:text-base leading-relaxed mb-6">
                         利用 Google Apps Script 將前端網頁（HTML/JS）與 Google Sheet/Form 無縫串接。免去傳統資料庫架設，透過 Webhook 與 API Token 實現輕量化登入驗證與自動化資料管理。
                     </p>
                     <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="text-xs font-cyber bg-cyber-pink/10 text-cyber-pink border border-cyber-pink/30 px-3 py-1 rounded-full">Google Apps Script</span>
+                        <span class="text-xs font-medium bg-slate-100 text-professional-textMuted border border-slate-200 px-3 py-1 rounded-full">Google Apps Script</span>
                     </div>
                 </div>
                 <div>
-                    <span class="block w-full text-center py-2 rounded border border-purple-500/30 bg-purple-950/20 text-purple-400 text-sm font-cyber font-medium">內部整合系統</span>
+                    <span class="block w-full text-center py-2.5 rounded-lg bg-slate-100 text-professional-textMuted text-sm font-medium">內部整合系統</span>
                 </div>
             </div>
 
@@ -351,48 +328,54 @@
 
     <section id="skills" class="py-24 px-6 max-w-6xl mx-auto relative z-10 scroll-mt-20">
         <div class="flex items-center space-x-4 mb-12">
-            <h2 class="text-2xl md:text-4xl font-cyber font-black tracking-wider text-white uppercase neon-text-blue">
-                // 技術工具 <span class="text-cyber-blue">Tech Stack</span>
+            <h2 class="text-2xl md:text-3xl font-sans font-bold tracking-tight text-professional-textDark">
+                技術工具 <span class="text-sm font-normal text-professional-textMuted block md:inline md:ml-2">/ Tech Stack</span>
             </h2>
-            <div class="h-[2px] flex-grow bg-gradient-to-r from-cyber-blue to-transparent"></div>
+            <div class="h-[1px] flex-grow bg-slate-200"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-cyber-blue/30 transition-all duration-300">
-                <h3 class="text-lg font-cyber font-bold text-white mb-4">前端技術</h3>
-                <ul class="space-y-2 text-gray-400 text-sm">
+            <div class="white-glass p-6 rounded-2xl border border-white">
+                <h3 class="text-base font-bold text-professional-textDark mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-3 bg-professional-blue rounded-full"></span>前端技術
+                </h3>
+                <ul class="space-y-2 text-professional-textMuted text-sm font-medium">
                     <li>HTML5 / CSS3</li><li>JavaScript (ES6+)</li><li>Tailwind CSS</li>
                 </ul>
             </div>
-            <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-cyber-pink/30 transition-all duration-300">
-                <h3 class="text-lg font-cyber font-bold text-white mb-4">後端與自動化</h3>
-                <ul class="space-y-2 text-gray-400 text-sm">
+            <div class="white-glass p-6 rounded-2xl border border-white">
+                <h3 class="text-base font-bold text-professional-textDark mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-3 bg-cyan-500 rounded-full"></span>後端與自動化
+                </h3>
+                <ul class="space-y-2 text-professional-textMuted text-sm font-medium">
                     <li>Python / Discord.py</li><li>Google Apps Script (GAS)</li>
                 </ul>
             </div>
-            <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-cyber-purple/30 transition-all duration-300">
-                <h3 class="text-lg font-cyber font-bold text-white mb-4">部署維護</h3>
-                <ul class="space-y-2 text-gray-400 text-sm">
+            <div class="white-glass p-6 rounded-2xl border border-white">
+                <h3 class="text-base font-bold text-professional-textDark mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-3 bg-indigo-500 rounded-full"></span>部署維護
+                </h3>
+                <ul class="space-y-2 text-professional-textMuted text-sm font-medium">
                     <li>GitHub Pages / Render</li><li>Railway / UptimeRobot</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <footer class="glass-nav border-t border-white/10 py-8 px-6 text-center relative z-10">
+    <footer class="white-glass-nav border-t border-slate-200 py-8 px-6 text-center relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs md:text-sm text-gray-500 font-cyber">
-                <span>&copy; 2026 <span class="text-gray-400">陳芃均 | Chen, Peng-Jun</span>. All Rights Reserved.</span>
-                <span class="text-cyber-blue/60 border border-cyber-blue/30 px-2 py-0.5 rounded text-[11px] uppercase tracking-widest bg-cyber-blue/5">
-                    Build: v1.0.0
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs md:text-sm text-professional-textMuted font-sans">
+                <span>&copy; 2026 <span class="text-professional-textDark font-medium">陳芃均 | Chen, Peng-Jun</span>. All Rights Reserved.</span>
+                <span class="text-professional-blue border border-professional-blue/20 px-2 py-0.5 rounded font-bold text-[11px] tracking-wide bg-professional-blue/5">
+                    Build: v1.1.0
                 </span>
             </div>
             
-            <div class="flex space-x-6 text-xl">
-                <a href="https://github.com/peng-jun" target="_blank" class="text-gray-400 hover:text-cyber-blue transition-colors duration-300" title="GitHub Profile">
+            <div class="flex space-x-6 text-lg">
+                <a href="https://github.com/peng-jun" target="_blank" class="text-professional-textMuted hover:text-professional-blue transition-colors duration-300" title="GitHub Profile">
                     <i class="fa-brands fa-github"></i>
                 </a>
-                <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="text-gray-400 hover:text-cyber-pink transition-colors duration-300" title="Discord Community">
+                <a href="https://discord.gg/YgT7qgQszR" target="_blank" class="text-professional-textMuted hover:text-indigo-500 transition-colors duration-300" title="Discord Community">
                     <i class="fa-brands fa-discord"></i>
                 </a>
             </div>
@@ -407,14 +390,14 @@
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        const phrases = ["網頁前端開發者", "Python 自動化腳本專家", "科技美學實踐者"];
+        const phrases = ["網頁前端開發者", "Python 自動化腳本專家", "高質感軟體工程實踐者"];
         let i = 0, timer;
         function typingEffect() {
             let word = phrases[i].split("");
             var loopTyping = function() {
                 if (word.length > 0) { document.getElementById('typewriter').innerHTML += word.shift(); }
-                else { setTimeout(deletingEffect, 2000); return false; }
-                timer = setTimeout(loopTyping, 100);
+                else { setTimeout(deletingEffect, 2500); return false; }
+                timer = setTimeout(loopTyping, 80);
             };
             loopTyping();
         }
@@ -422,23 +405,12 @@
             let word = phrases[i].split("");
             var loopDeleting = function() {
                 if (word.length > 0) { word.pop(); document.getElementById('typewriter').innerHTML = word.join(""); }
-                else { i = (phrases.length > (i + 1)) ? i + 1 : 0; setTimeout(typingEffect, 500); return false; }
-                timer = setTimeout(loopDeleting, 50);
+                else { i = (phrases.length > (i + 1)) ? i + 1 : 0; setTimeout(typingEffect, 400); return false; }
+                timer = setTimeout(loopDeleting, 40);
             };
             loopDeleting();
         }
         document.addEventListener('DOMContentLoaded', typingEffect);
-
-        const cards = document.querySelectorAll('.tilt-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left, y = e.clientY - rect.top;
-                const rotateX = ((y / rect.height) - 0.5) * -15, rotateY = ((x / rect.width) - 0.5) * 15;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
-        });
     </script>
 </body>
 </html>
