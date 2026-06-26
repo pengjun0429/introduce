@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳芃均 | Chen, Peng-Jun — Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberbg: '#0a0b10',
+                        neonblue: '#00f0ff',
+                        neonpink: '#ff007f',
+                        neonpurple: '#7000ff',
+                    },
+                    fontFamily: {
+                        mono: ['"Fira Code"', 'monospace'],
+                        sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0a0b10;
+            color: #e0e0e0;
+            font-family: 'Noto Sans TC', 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        ::selection { background: rgba(0, 240, 255, 0.3); color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0b10; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00f0ff, #7000ff); border-radius: 4px; }
+
+        .glass {
+            background: rgba(10, 11, 16, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(10, 11, 16, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), inset 0 0 30px rgba(0, 240, 255, 0.03);
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        @keyframes breathe { 0%,100% { box-shadow: 0 0 8px rgba(0,240,255,0.4), 0 0 20px rgba(0,240,255,0.15); } 50% { box-shadow: 0 0 16px rgba(0,240,255,0.7), 0 0 40px rgba(0,240,255,0.3); } }
+        @keyframes breathe-pink { 0%,100% { box-shadow: 0 0 8px rgba(255,0,127,0.4), 0 0 20px rgba(255,0,127,0.15); } 50% { box-shadow: 0 0 16px rgba(255,0,127,0.7), 0 0 40px rgba(255,0,127,0.3); } }
+        @keyframes breathe-purple { 0%,100% { box-shadow: 0 0 8px rgba(112,0,255,0.4), 0 0 20px rgba(112,0,255,0.15); } 50% { box-shadow: 0 0 16px rgba(112,0,255,0.7), 0 0 40px rgba(112,0,255,0.3); } }
+
+        .btn-neon-blue {
+            background: linear-gradient(135deg, rgba(0,240,255,0.15), rgba(0,240,255,0.05));
+            border: 1px solid rgba(0,240,255,0.5);
+            color: #00f0ff;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        .btn-neon-blue:hover {
+            background: linear-gradient(135deg, rgba(0,240,255,0.3), rgba(0,240,255,0.1));
+            border-color: #00f0ff;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,240,255,0.8);
+        }
+        .btn-neon-pink {
+            background: linear-gradient(135deg, rgba(255,0,127,0.15), rgba(255,0,127,0.05));
+            border: 1px solid rgba(255,0,127,0.5);
+            color: #ff007f;
+            animation: breathe-pink 3s ease-in-out infinite;
+        }
+        .btn-neon-pink:hover {
+            background: linear-gradient(135deg, rgba(255,0,127,0.3), rgba(255,0,127,0.1));
+            border-color: #ff007f;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,0,127,0.8);
+        }
+
+        .tag-blue { background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.3); color: #00f0ff; }
+        .tag-pink { background: rgba(255,0,127,0.1); border: 1px solid rgba(255,0,127,0.3); color: #ff007f; }
+        .tag-purple { background: rgba(112,0,255,0.1); border: 1px solid rgba(112,0,255,0.3); color: #7000ff; }
+
+        .grid-bg {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .scanline {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9998;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px);
+        }
+        .cursor-glow {
+            position: fixed; width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,240,255,0.06) 0%, transparent 70%);
+            pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+            transition: left 0.15s ease, top 0.15s ease;
+        }
+        .hero-glow {
+            position: absolute; width: 600px; height: 600px; border-radius: 50%;
+            filter: blur(150px); opacity: 0.15; pointer-events: none;
+        }
+
+        .typing-cursor::after { content: '|'; animation: blink 1s step-end infinite; color: #00f0ff; }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .nav-link { position: relative; transition: color 0.3s ease; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px;
+            background: #00f0ff; box-shadow: 0 0 8px #00f0ff;
+            transition: all 0.3s ease; transform: translateX(-50%);
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: #00f0ff; text-shadow: 0 0 10px rgba(0,240,255,0.5); }
+
+        .card-3d { transform-style: preserve-3d; perspective: 1000px; }
+        .card-3d-inner { transition: transform 0.3s ease; transform-style: preserve-3d; }
+
+        .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .section-fade.visible { opacity: 1; transform: translateY(0); }
+
+        .skill-item { transition: all 0.3s ease; }
+        .skill-item:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,240,255,0.15); }
+
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+
+        .project-link-btn { transition: all 0.3s ease; }
+        .project-link-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+        @media (max-width: 768px) {
+            .hero-glow { width: 300px; height: 300px; }
+            .cursor-glow { display: none; }
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <a href="#hero" class="flex flex-col">
+                    <span class="text-lg sm:text-xl font-bold font-mono tracking-wider">
+                        <span class="text-neonblue">陳芃均</span>
+                        <span class="text-white/60 hidden sm:inline"> | Chen, Peng-Jun</span>
+                    </span>
+                    <span class="text-[10px] font-mono font-medium tracking-widest text-neonblue/60 uppercase mt-0.5">
+                        // 資優民主國 MEMBER
+                    </span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-sm font-medium text-white/70 tracking-wide">關於我</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-white/70 tracking-wide">核心專案</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-white/70 tracking-wide">技術工具</a>
+                </div>
+                <button class="md:hidden text-white/70 hover:text-neonblue transition-colors" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu fixed top-0 right-0 h-full w-64 glass md:hidden z-50" id="mobileMenu">
+            <div class="flex flex-col items-start p-8 space-y-6">
+                <button class="self-end text-white/70 hover:text-neonblue transition-colors" id="menuClose" aria-label="Close menu">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <a href="#about" class="nav-link text-lg font-medium text-white/80 tracking-wide">關於我</a>
+                <a href="#projects" class="nav-link text-lg font-medium text-white/80 tracking-wide">核心專案</a>
+                <a href="#skills" class="nav-link text-lg font-medium text-white/80 tracking-wide">技術工具</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="hero-glow bg-neonblue/30 top-1/4 left-1/4" style="position: absolute;"></div>
+        <div class="hero-glow bg-neonpurple/20 bottom-1/4 right-1/4" style="position: absolute;"></div>
+        <div class="hero-glow bg-neonpink/15 top-1/3 right-1/3" style="position: absolute;"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-mono tracking-widest uppercase mb-8 border border-neonblue/20 text-neonblue/60 bg-neonblue/5">
+                👋 Portfolio Ecosystem
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
+                <span class="text-white">哈囉，我是</span>
+                <br>
+                <span class="bg-gradient-to-r from-neonblue via-neonpurple to-neonpink bg-clip-text text-transparent">陳芃均</span>
+            </h1>
+            <div class="text-xs sm:text-sm font-mono font-bold text-neonblue/70 tracking-widest uppercase mb-6">
+                [ AFFILIATION: 資優民主國 ]
+            </div>
+            <div class="h-12 sm:h-14 flex items-center justify-center mb-10">
+                <p id="typewriter" class="text-base sm:text-lg md:text-xl text-white/60 font-mono tracking-wide"></p>
+                <span class="typing-cursor text-neonblue"></span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#projects" class="btn-neon-blue px-8 py-3 rounded-lg font-semibold text-sm sm:text-base tracking-wide transition-all duration-300">
+                    <i class="fas fa-rocket mr-2"></i>瀏覽核心作品
+                </a>
+                <a href="https://discord.gg/k94ewafWFF" target="_blank" rel="noopener noreferrer" class="btn-neon-pink px-8 py-3 rounded-lg font-semibold text-sm sm:text-base tracking-wide transition-all duration-300">
+                    <i class="fab fa-discord mr-2"></i>聯絡我（直達 Discord）
+                </a>
+            </div>
+            <div class="mt-16 animate-bounce">
+                <a href="#about" class="text-white/30 hover:text-neonblue transition-colors">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-24 sm:py-32 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="section-fade">
+                <div class="flex items-center space-x-4 mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+                        <span class="bg-gradient-to-r from-neonblue to-neonpurple bg-clip-text text-transparent">關於我</span>
+                        <span class="text-sm font-normal text-white/40 block md:inline md:ml-2">/ About Me</span>
+                    </h2>
+                    <div class="h-[1px] flex-grow bg-white/10"></div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 sm:p-12 card-3d">
+                    <div class="card-3d-inner">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="flex-shrink-0">
+                                <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-2 border-neonblue/30 flex items-center justify-center bg-neonblue/5">
+                                    <i class="fas fa-user-astronaut text-4xl sm:text-5xl text-neonblue/60"></i>
+                                </div>
+                            </div>
+                            <div class="text-center md:text-left">
+                                <p class="text-lg sm:text-xl leading-relaxed text-white/80 mb-6">
+                                    身為 <a href="https://discord.gg/k94ewafWFF" target="_blank" rel="noopener noreferrer" class="text-neonblue hover:underline font-semibold transition-all duration-300">資優民主國</a> 的一員，我是一位熱衷於將嚴謹的程式邏輯與前衛的視覺美學相結合的開發者。專注於 Web 前端應用開發、Discord 機器人自動化以及雲端自動化整合。擅長在多平台上進行高效佈署與全天候維護，持續追求程式碼的優化與極致的用戶體驗。
+                                </p>
+                                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                                    <span class="px-3 py-1 rounded-full text-xs font-mono tag-blue">Web Frontend</span>
+                                    <span class="px-3 py-1 rounded-full text-xs font-mono tag-pink">Automation</span>
+                                    <span class="px-3 py-1 rounded-full text-xs font-mono tag-purple">Cloud Deploy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-24 sm:py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-fade">
+                <div class="flex items-center space-x-4 mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+                        <span class="bg-gradient-to-r from-neonpink to-neonpurple bg-clip-text text-transparent">核心專案</span>
+                        <span class="text-sm font-normal text-white/40 block md:inline md:ml-2">/ Projects</span>
+                    </h2>
+                    <div class="h-[1px] flex-grow bg-white/10"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Project 1: Taiwan EQ Live -->
+                    <div class="glass-card rounded-2xl overflow-hidden card-3d group">
+                        <div class="card-3d-inner">
+                            <div class="h-2 bg-gradient-to-r from-neonblue to-neonpurple"></div>
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-neonblue transition-colors">
+                                        🚨 Taiwan EQ Live 台灣即時地震資訊
+                                    </h3>
+                                </div>
+                                <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-6">
+                                    針對台灣地理位置量身打造的即時地震監測與回報平台。高效串接即時數據 API，能在震波發生時將關鍵資訊以最快速度視覺化呈現，提供使用者第一手的防災觀測。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-blue">Live Data</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-blue">API Integration</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-purple">Real-time</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://pengjun0429.github.io/taiwan-eq-live/" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold btn-neon-blue">
+                                        <i class="fas fa-external-link-alt"></i>瀏覽網站
+                                    </a>
+                                    <a href="https://github.com/pengjun0429/taiwan-eq-live" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white/5 border border-white/10 text-white/70 hover:text-white hover:border-white/30 transition-all">
+                                        <i class="fab fa-github"></i>原始碼
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Discord Embed Sender -->
+                    <div class="glass-card rounded-2xl overflow-hidden card-3d group">
+                        <div class="card-3d-inner">
+                            <div class="h-2 bg-gradient-to-r from-neonpink to-neonblue"></div>
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-neonpink transition-colors">
+                                        💬 Discord Embed 視覺化訊息編輯器
+                                    </h3>
+                                </div>
+                                <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-6">
+                                    採用玻璃擬態風格的網頁版 Discord 工具。透過 Webhook API 即時預覽並發送精美 Embed 訊息，支援自訂標題、內容、邊框顏色，所見即所得。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-pink">HTML5</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-pink">JavaScript</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-blue">Glassmorphism</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-purple">Webhook API</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://pengjun0429.github.io/discord-embed-sender/" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold btn-neon-blue">
+                                        <i class="fas fa-external-link-alt"></i>瀏覽工具
+                                    </a>
+                                    <a href="https://github.com/pengjun0429/discord-embed-sender" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white/5 border border-white/10 text-white/70 hover:text-white hover:border-white/30 transition-all">
+                                        <i class="fab fa-github"></i>原始碼
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: 快捷鍵特工 -->
+                    <div class="glass-card rounded-2xl overflow-hidden card-3d group">
+                        <div class="card-3d-inner">
+                            <div class="h-2 bg-gradient-to-r from-neonblue to-neonpink"></div>
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-neonblue transition-colors">
+                                        🎮 快捷鍵特工 — OS 密碼戰
+                                    </h3>
+                                </div>
+                                <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-6">
+                                    純鍵盤操作的賽博朋克網頁遊戲。玩家扮演即將當機的作業系統核心，只能靠快捷鍵解除病毒入侵、記憶體超載等威脅。支援全球排行榜，搭配 Cloudflare Workers + D1 後端。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-blue">JavaScript</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-blue">Cloudflare Workers</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-purple">D1 Database</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-pink">Electron</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://pengjun0429.github.io/shortcut-agent/" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold btn-neon-blue">
+                                        <i class="fas fa-external-link-alt"></i>瀏覽網站
+                                    </a>
+                                    <a href="https://github.com/pengjun0429/shortcut-agent" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-white/5 border border-white/10 text-white/70 hover:text-white hover:border-white/30 transition-all">
+                                        <i class="fab fa-github"></i>原始碼
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Discord Bot -->
+                    <div class="glass-card rounded-2xl overflow-hidden card-3d group">
+                        <div class="card-3d-inner">
+                            <div class="h-2 bg-gradient-to-r from-neonpurple to-neonblue"></div>
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-neonpurple transition-colors">
+                                        🤖 Discord 自動化生態系 (User Empire)
+                                    </h3>
+                                </div>
+                                <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-6">
+                                    基於 Python 異步架構開發，整合新進成員歡迎、特定資訊抓取（Sniper）等功能。穩定託管於雲端平台（Render/Railway），並搭配 UptimeRobot 進行 24/7 全天候監控。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-purple">Python</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-purple">Discord.py</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-blue">Render</span>
+                                    <span class="px-2 py-1 rounded text-xs font-mono tag-pink">UptimeRobot</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://discord.gg/k94ewafWFF" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold btn-neon-pink">
+                                        <i class="fab fa-discord"></i>社群邀請
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Featured Project: 資優民主國 (Full Width) -->
+                <div class="mt-8">
+                    <div class="glass-card rounded-2xl overflow-hidden card-3d group">
+                        <div class="card-3d-inner">
+                            <div class="h-2 bg-gradient-to-r from-neonpurple via-neonpink to-neonblue"></div>
+                            <div class="p-8 sm:p-10">
+                                <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 rounded-2xl bg-neonpurple/10 border border-neonpurple/20 flex items-center justify-center">
+                                            <i class="fas fa-globe text-3xl text-neonpurple"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-3 mb-3">
+                                            <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-neonpurple transition-colors">
+                                                🌐 資優民主國官方網站
+                                            </h3>
+                                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-neonpurple/10 border border-neonpurple/30 text-neonpurple">Featured</span>
+                                        </div>
+                                        <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-5 max-w-3xl">
+                                            一個由國中生創立的虛擬國家網站。包含國家首頁、建國大事紀、政府中央職位與中央最高法規等完整頁面架構，搭配現代化 UI 設計與響應式佈局。
+                                        </p>
+                                        <div class="flex flex-wrap gap-2 mb-6">
+                                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-purple">HTML5</span>
+                                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-purple">CSS3</span>
+                                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-blue">Multi-page</span>
+                                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-pink">Responsive</span>
+                                        </div>
+                                        <div class="flex flex-wrap gap-3">
+                                            <a href="https://pengjun0429.github.io/country/" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold btn-neon-blue">
+                                                <i class="fas fa-external-link-alt"></i>瀏覽網站
+                                            </a>
+                                            <a href="https://github.com/pengjun0429/country" target="_blank" rel="noopener noreferrer" class="project-link-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-white/5 border border-white/10 text-white/70 hover:text-white hover:border-white/30 transition-all">
+                                                <i class="fab fa-github"></i>原始碼
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative py-24 sm:py-32 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="section-fade">
+                <div class="flex items-center space-x-4 mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+                        <span class="bg-gradient-to-r from-neonblue to-neonpink bg-clip-text text-transparent">技術工具</span>
+                        <span class="text-sm font-normal text-white/40 block md:inline md:ml-2">/ Tech Stack</span>
+                    </h2>
+                    <div class="h-[1px] flex-grow bg-white/10"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Frontend -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 skill-item text-center">
+                        <div class="w-14 h-14 rounded-xl bg-neonblue/10 border border-neonblue/20 flex items-center justify-center mx-auto mb-5">
+                            <i class="fas fa-code text-2xl text-neonblue"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">前端技術</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-blue">HTML5</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-blue">CSS3</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-blue">JavaScript (ES6+)</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-blue">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend & Automation -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 skill-item text-center">
+                        <div class="w-14 h-14 rounded-xl bg-neonpurple/10 border border-neonpurple/20 flex items-center justify-center mx-auto mb-5">
+                            <i class="fas fa-server text-2xl text-neonpurple"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">後端與自動化</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-purple">Python</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-purple">Discord.py</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-purple">Cloudflare Workers</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-purple">D1 Database</span>
+                        </div>
+                    </div>
+
+                    <!-- Deployment -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 skill-item text-center">
+                        <div class="w-14 h-14 rounded-xl bg-neonpink/10 border border-neonpink/20 flex items-center justify-center mx-auto mb-5">
+                            <i class="fas fa-cloud text-2xl text-neonpink"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">部署維護</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-pink">GitHub Pages</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-pink">Render</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-pink">Railway</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-pink">UptimeRobot</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-mono tag-pink">Cloudflare</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-12 px-4 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col items-center sm:items-start">
+                    <span class="text-lg font-bold font-mono">
+                        <span class="text-neonblue">陳芃均</span>
+                        <span class="text-white/40"> | Chen, Peng-Jun</span>
+                    </span>
+                    <span class="text-xs font-mono text-neonblue/40 border border-neonblue/15 px-2 py-0.5 rounded mt-1 tracking-wide bg-neonblue/5">
+                        Build: v1.2.0
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com/pengjun0429" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-white/50 hover:text-neonblue hover:border-neonblue/30 transition-all duration-300" aria-label="GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://discord.gg/k94ewafWFF" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-white/50 hover:text-neonpink hover:border-neonpink/30 transition-all duration-300" aria-label="Discord">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                    <a href="https://pengjun.qzz.io/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-white/50 hover:text-neonpurple hover:border-neonpurple/30 transition-all duration-300" aria-label="Website">
+                        <i class="fas fa-globe text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/5 text-center">
+                <p class="text-white/30 text-xs font-mono">
+                    &copy; 2026 <span class="text-neonblue/60">陳芃均</span> | Chen, Peng-Jun. Crafted with <span class="text-neonpink">♥</span> and code.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cursor Glow Effect
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => { mobileMenu.classList.add('open'); });
+        menuClose.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
+        });
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 11, 16, 0.9)';
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+            } else {
+                navbar.style.background = 'rgba(10, 11, 16, 0.65)';
+                navbar.style.borderBottom = 'none';
+            }
+        });
+
+        // Typewriter Effect
+        const typewriterEl = document.getElementById('typewriter');
+        const phrases = ['網頁前端開發者', 'Discord 自動化專家', '科技美學實踐者'];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false, typeSpeed = 80;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 40;
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 80;
+            }
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500;
+            }
+            setTimeout(typeWriter, typeSpeed);
+        }
+        typeWriter();
+
+        // Section Fade-in on Scroll
+        const sectionFades = document.querySelectorAll('.section-fade');
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+        }, observerOptions);
+        sectionFades.forEach(section => { observer.observe(section); });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.card-3d').forEach(card => {
+            const inner = card.querySelector('.card-3d-inner');
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / centerY * -3;
+                const rotateY = (x - centerX) / centerX * 3;
+                inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                inner.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        // Parallax for hero glows
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelectorAll('.hero-glow').forEach((glow, index) => {
+                const speed = 0.1 + index * 0.05;
+                glow.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
